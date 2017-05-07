@@ -147,6 +147,7 @@ module.exports = {
         exclude: [
           /\.html$/,
           /\.(js|jsx)$/,
+          /\.less$/,
           /\.css$/,
           /\.json$/,
           /\.bmp$/,
@@ -179,12 +180,29 @@ module.exports = {
           // @remove-on-eject-begin
           babelrc: false,
           presets: [require.resolve('babel-preset-react-app')],
+          plugins: [
+            ['import', [{ libraryName: "antd", style: true }]],  // 加载 less 文件
+          ],
           // @remove-on-eject-end
           // This is a feature of `babel-loader` for webpack (not Babel itself).
           // It enables caching results in ./node_modules/.cache/babel-loader/
           // directory for faster rebuilds.
           cacheDirectory: true,
         },
+      },
+      // 解析 less 文件，并加入变量覆盖配置
+      {
+        test: /\.less$/,
+        use: [{
+            loader: "style-loader" // creates style nodes from JS strings 
+        }, {
+            loader: "css-loader" // translates CSS into CommonJS 
+        }, {
+            loader: "less-loader", // compiles Less to CSS 
+            options: {
+              modifyVars: {"@primary-color":"#1DA57A"}
+            }
+        }]
       },
       // "postcss" loader applies autoprefixer to our CSS.
       // "css" loader resolves paths in CSS and adds assets as dependencies.
