@@ -144,6 +144,7 @@ module.exports = {
           /\.(js|jsx)(\?.*)?$/,
           /\.less$/,
           /\.css$/,
+          /\.scss$/,
           /\.json$/,
           /\.svg$/
         ],
@@ -176,6 +177,11 @@ module.exports = {
       {
         test: /\.less$/,
         loader: 'style!css!postcss!less?{modifyVars:{"@primary-color":"#1DA57A"}}'
+      },
+      // 解析 scss 文件
+      {
+        test: /\.scss$/,
+        loader: 'style!css!postcss!sass'
       },
       // "postcss" loader applies autoprefixer to our CSS.
       // "css" loader resolves paths in CSS and adds assets as dependencies.

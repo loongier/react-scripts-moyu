@@ -47,4 +47,18 @@ creact-react-app 脚手架扩展 webpack配置扩展
   }
 ]`
 
+## sass-loader 配置
+
+参照[sass-loader](https://www.npmjs.com/package/sass-loader)文档
+在webpack.config.dev.js loaders中添加
+`
+// 解析 scss 文件
+{
+  test: /\.scss$/,
+  loader: 'style!css!postcss!sass'
+},
+`
+exclude 中添加
+`/\.scss$/,`
+
 
