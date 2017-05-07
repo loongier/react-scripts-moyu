@@ -17,8 +17,7 @@ creact-react-app 脚手架扩展 webpack配置扩展
 
 * 在项目根目录下添加.eslintrc文件
 * 将以下代码添加到 webpack.config.dev.js
-`
-use: [{
+`use: [{
   // @remove-on-eject-begin
   // Point ESLint to our predefined config.
   options: {
@@ -27,11 +26,9 @@ use: [{
   },
   // @remove-on-eject-end
   loader: 'eslint-loader'
-}],
-`
+}]`
 添加为
-`
-preLoaders: [
+`preLoaders: [
   {
     test: /\.(js|jsx)$/,
     loader: 'eslint',
@@ -48,7 +45,6 @@ preLoaders: [
     }],
     include: paths.appSrc,
   }
-],
-`
+]`
 
 
